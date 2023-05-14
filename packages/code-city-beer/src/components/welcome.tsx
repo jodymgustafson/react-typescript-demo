@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 
 type WelcomeProps = {
+  onStartOrder: () => void;
 };
 
 export default function Welcome(props: WelcomeProps) {
+  const [table, setTable] = useState("");
+  const [orderName, setOrderName] = useState("");
+
   return (
     <div className="welcome view">
       <header className="App-header">
@@ -17,7 +21,7 @@ export default function Welcome(props: WelcomeProps) {
       </div>
       <div className="start-data">
         <label>Table</label>
-        <select autoFocus>
+        <select autoFocus value={table} onChange={e => setTable(e.target.value)}>
           <option></option>
           <option>1</option>
           <option>2</option>
@@ -26,10 +30,10 @@ export default function Welcome(props: WelcomeProps) {
           <option>5</option>
         </select>
         <label>Your Name</label>
-        <input type="text" />
+        <input type="text" value={orderName} onChange={e => setOrderName(e.target.value)} />
       </div>
       <div>
-        <button>Start Order &#127866;</button>
+        <button disabled={!(orderName && table)} onClick={props.onStartOrder}>Start Order &#127866;</button>
       </div>
     </div>
   );
