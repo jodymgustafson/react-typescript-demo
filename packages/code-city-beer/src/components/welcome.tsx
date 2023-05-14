@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 type WelcomeProps = {
-  onStartOrder: () => void;
+  onStartOrder: (table: string, orderName: string) => void;
 };
 
 export default function Welcome(props: WelcomeProps) {
@@ -33,7 +33,7 @@ export default function Welcome(props: WelcomeProps) {
         <input type="text" value={orderName} onChange={e => setOrderName(e.target.value)} />
       </div>
       <div>
-        <button disabled={!(orderName && table)} onClick={props.onStartOrder}>Start Order &#127866;</button>
+        <button disabled={!(orderName && table)} onClick={() => props.onStartOrder(table, orderName)}>Start Order &#127866;</button>
       </div>
     </div>
   );
