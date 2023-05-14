@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./components.scss";
 
 type WelcomeProps = {
   onStartOrder: (table: string, orderName: string) => void;

@@ -1,0 +1,87 @@
+.welcome {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        margin-top: 0;
+    }
+
+    .start-data {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto auto;
+        gap: 4px 4px;
+    }
+
+    >div {
+        margin: .5em 0;
+    }
+
+    .start-data {
+        label {
+        text-align: right;
+        }
+        input {
+            width: 8em;
+        }
+        select {
+            width: 4em;
+        }
+    }
+
+    button {
+        background-color: darkseagreen;
+        color: black;
+        padding: .25em;
+        &:disabled {
+            opacity: .5;
+        }
+    }
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    >header {
+        display: block;
+        font-size: 120%;
+        margin-top: 1em;
+    }
+    .beer-list {
+        list-style-type: none;
+        padding: 0;
+        cursor: pointer;
+        li {
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+            margin: .5em 0;
+            max-width: 40em;
+            header {
+                color: cyan;
+            }
+            img {
+                display: inline-block;
+                width: 120px;
+                height: 120px;
+                border: 1px solid gray;
+                margin-right: 1em;
+            }
+            border: 3px solid darkmagenta;
+            border-radius: .25em;
+            padding: .25em .5em;
+            .abv {
+                font-size: .7em;
+            }
+            .description {
+                font-size: .8em;
+            }
+        }
+    }
+}

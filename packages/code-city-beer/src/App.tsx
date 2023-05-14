@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
-import Welcome from './components/welcome';
+import Welcome from './components/Welcome';
+import Menu from './components/Menu';
 
-type ViewName = "home" | "beer-list";
+type ViewName = "home" | "menu";
 
 function App() {
   const [view, setView] = useState<ViewName>("home");
@@ -12,13 +13,14 @@ function App() {
   return (
     <div className="App">
       {view === "home" && <Welcome onStartOrder={startOrder}/>}
+      {view === "menu" && <Menu table={table} orderName={orderName}/>}
     </div>
   );
 
   function startOrder(table: string, orderName: string): void {
     setTable(table);
     setOrderName(orderName);
-    setView("beer-list");
+    setView("menu");
   }
 }
 

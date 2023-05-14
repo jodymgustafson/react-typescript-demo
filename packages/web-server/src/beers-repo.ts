@@ -19,11 +19,11 @@ const beerData: Beer[] = [
     },
     {
         id: "3",
-        name: "Pacman Pale Ale",
+        name: "Pac-Man Pale Ale",
         description: "A delightfully pleasant yellow colored ale--I ain't afraid of no ghost",
         abv: "4.8%",
         pintsRemaining: 100,
-        imageUrl: "pacman.png"
+        imageUrl: "pac-man.webp"
     },
     {
         id: "4",
@@ -37,9 +37,17 @@ const beerData: Beer[] = [
         id: "5",
         name: "Space Invaders IPA",
         description: "A hopped up ale with hints of pine and grapefruit--just the thing for taking on an alien invasion",
-        abv: "5.6%",
+        abv: "7.2%",
         pintsRemaining: 100,
         imageUrl: "invaders.png"
+    },
+    {
+        id: "6",
+        name: "Ms. Pac-man Fruit Ale",
+        description: "A fruity ale with berries, cherries and a hint of ghost pepper. A sophisticated yet down-to-earth brew.",
+        abv: "5.9%",
+        pintsRemaining: 100,
+        imageUrl: "ms-pac-man.png"
     },
 ];
 
