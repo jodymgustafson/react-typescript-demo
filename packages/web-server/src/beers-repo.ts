@@ -4,23 +4,23 @@ const beerData: Beer[] = [
     {
         id: "1",
         name: "Asteroids Amber Ale",
-        description: "A amber hued ale with notes of asteroid dust and rocket fuel",
+        description: "A amber hued ale with notes of asteroid dust and rocket fuel.",
         abv: "5.6%",
         pintsRemaining: 100,
-        imageUrl: "asteroids.png"
+        imageUrl: "asteroids.webp"
     },
     {
         id: "2",
         name: "Centipede Stout",
-        description: "A dark beer with the deep taste of roasted insects and mushrooms",
+        description: "A dark beer with a deep nutty taste of roasted insects and mushrooms.",
         abv: "6.6%",
         pintsRemaining: 100,
-        imageUrl: "centipede.png"
+        imageUrl: "centipede.webp"
     },
     {
         id: "3",
         name: "Pac-Man Pale Ale",
-        description: "A delightfully pleasant yellow colored ale--I ain't afraid of no ghost",
+        description: "A delightfully pleasant yellow hued ale--I ain't afraid of no ghost.",
         abv: "4.8%",
         pintsRemaining: 100,
         imageUrl: "pac-man.webp"
@@ -28,26 +28,26 @@ const beerData: Beer[] = [
     {
         id: "4",
         name: "Galaga Lager",
-        description: "Clear and crisp with a foamy head, and the taste of alien butt being blown to bits",
+        description: "Clear and crisp with a foamy head, and the taste of alien butt being blown to bits.",
         abv: "5.8%",
         pintsRemaining: 100,
-        imageUrl: "galaga.png"
+        imageUrl: "galaga.webp"
     },
     {
         id: "5",
         name: "Space Invaders IPA",
-        description: "A hopped up ale with hints of pine and grapefruit--just the thing for taking on an alien invasion",
+        description: "A hopped up ale with hints of pine and grapefruit--just the thing for taking on an alien invasion.",
         abv: "7.2%",
         pintsRemaining: 100,
-        imageUrl: "invaders.png"
+        imageUrl: "invaders.webp"
     },
     {
         id: "6",
-        name: "Ms. Pac-man Fruit Ale",
+        name: "Ms. Pac-Man Fruit Ale",
         description: "A fruity ale with berries, cherries and a hint of ghost pepper. A sophisticated yet down-to-earth brew.",
         abv: "5.9%",
         pintsRemaining: 100,
-        imageUrl: "ms-pac-man.png"
+        imageUrl: "ms-pac-man.webp"
     },
 ];
 

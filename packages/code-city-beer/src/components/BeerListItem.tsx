@@ -1,13 +1,7 @@
 import React from "react";
+import { Beer } from "web-server/src/types";
 
-type BeerListItemProps = {
-  name: string;
-  description: string;
-  abv: string;
-  imageUrl: string;
-};
-
-export default function BeerListItem(props: BeerListItemProps) {
+export default function BeerListItem(props: Beer) {
   return (
     <li>
       <img src={props.imageUrl} alt={props.name} />

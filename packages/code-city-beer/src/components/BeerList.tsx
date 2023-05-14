@@ -1,37 +1,15 @@
 import React from "react";
 import BeerListItem from "./BeerListItem";
+import { Beer } from "web-server/src/types";
 
 type BeerListProps = {
+  beers: Beer[];
 };
 
 export default function BeerList(props: BeerListProps) {
   return (
     <ul className="beer-list">
-      <BeerListItem
-        name="Beer Name"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et gravida diam, ut commodo justo. "
-        imageUrl="beer.webp"
-        abv="5%"/>
-      <BeerListItem
-        name="Beer Name"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et gravida diam, ut commodo justo. "
-        imageUrl="beer.webp"
-        abv="5%"/>
-      <BeerListItem
-        name="Beer Name"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et gravida diam, ut commodo justo. "
-        imageUrl="beer.webp"
-        abv="5%"/>
-      <BeerListItem
-        name="Beer Name"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et gravida diam, ut commodo justo. "
-        imageUrl="beer.webp"
-        abv="5%"/>
-      <BeerListItem
-        name="Beer Name"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse et gravida diam, ut commodo justo. "
-        imageUrl="beer.webp"
-        abv="5%"/>
+      {props.beers.map(beer => <BeerListItem {...beer}/>)}
     </ul>
   );
 }

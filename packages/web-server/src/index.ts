@@ -1,12 +1,14 @@
 import express from 'express';
 import * as beersHandler from './beers-handler';
 import * as ordersHandler from './orders-handler';
+import cors from "cors";
 
 const PORT = 2001;
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 app.use((req, res, next) => {
     console.log(req.method, req.url);
     next();
