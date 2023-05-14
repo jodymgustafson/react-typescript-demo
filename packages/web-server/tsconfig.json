@@ -5,7 +5,8 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "esModuleInterop": true,
-        "allowJs": false
+        "allowJs": false,
+        "sourceMap": true
     },
     "include": [
         "src"
