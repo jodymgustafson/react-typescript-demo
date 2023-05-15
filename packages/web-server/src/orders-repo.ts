@@ -1,27 +1,34 @@
-import { OrderRequest } from "./types";
+import { OrderId, OrderRequest } from "./types";
 
 const orderData: Record<string, OrderRequest[]> = {};
 
 export interface OrdersRepository {
-    get(table: string): OrderRequest[];
-    addOrder(table: string, order: OrderRequest): void;
-    deleteOrder(table: string): void;
+    get(id: OrderId): OrderRequest[];
+    addOrder(id: OrderId, order: OrderRequest): void;
+    deleteOrder(id: OrderId): void;
 }
 
 export class MockOrdersRepository implements OrdersRepository {
-    get(table: string): OrderRequest[] {
-        return orderData[table];
+    get(id: OrderId): OrderRequest[] {
+        return orderData[getRecordId(id)];
     }
 
-    addOrder(table: string, order: OrderRequest): void {
-        const orders = orderData[table] ?? (orderData[table] = []);
+    addOrder(id: OrderId, order: OrderRequest): void {
+        const recordId = getRecordId(id);
+        const orders = orderData[recordId] ?? (orderData[recordId] = []);
         orders.push(order);
     }
 
-    deleteOrder(table: string): void {
-        const orders = orderData[table];
+    deleteOrder(id: OrderId): void {
+        const recordId = getRecordId(id);
+        const orders = orderData[recordId];
         if (orders) {
-            delete orderData[table];
+            delete orderData[recordId];
         }
     }
 }
+
+function getRecordId(id: OrderId): string {
+    return id.table + "/" + id.name;
+}
+

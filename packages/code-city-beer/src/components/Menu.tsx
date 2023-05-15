@@ -3,6 +3,7 @@ import BeerList from "./BeerList";
 import { Beer } from "web-server/src/types";
 import "./components.scss";
 import { BeerService, LocalBeerService } from "../services/beer-service";
+import { LocalOrderService, OrderService } from "../services/order-service";
 
 type MenuProps = {
   table: string;
@@ -14,27 +15,54 @@ export default function Menu(props: MenuProps) {
   if (!beerSvc) {
     setBeerSvc(new LocalBeerService("localhost:2001"));
   }
+
+  const [orderSvc, setOrderSvc] = useState<OrderService>();
+  if (!orderSvc) {
+    setOrderSvc(new LocalOrderService("localhost:2001", props.table, props.orderName));
+  }
+
   const [beerList, setBeerList] = useState<Beer[]>([]);
   const [error, setError] = useState("");
+  const [lastOrderTime, setLastOrderTime] = useState(0);
 
   useEffect(() => {
     if (beerSvc) {
       setError("");
-      beerSvc.list().then(list => {
-        setBeerList(list);
-      })
-      .catch(e => {
-        console.log("Error:", e.message);
-        setError(e.message);
-      });
+      beerSvc.list()
+        .then(list => {
+          setBeerList(list);
+        })
+        .catch(e => {
+          console.log("Error:", e.message);
+          setError(e.message);
+        });
     }
-  }, [beerSvc])
+  }, [beerSvc, lastOrderTime])
 
   return (
     <div className="menu">
       <header>&#127866; Code City Beer List &#127866;</header>
+      <div className="tab-info">
+        Table: {props.table}, Name: {props.orderName}
+        <button>View/Pay your tab &#x2714;</button>
+      </div>
       {error && <div className="error">Error fetching beer list: {error}</div>}
-      <BeerList beers={beerList}/>
+      <BeerList beers={beerList} onOrder={onOrderBeer} />
     </div>
   );
+
+  function onOrderBeer(id: string): void {
+    orderSvc!.orderBeer(id)
+      .then(() => {
+        setLastOrderTime(Date.now());
+        toast("Your beer is on the way!");
+      })
+      .catch(err => {
+        setError("There was a problem with your order: " + err.message);
+      });
+  }
+
+  function toast(message: string): void {
+    alert(message);
+  }
 }

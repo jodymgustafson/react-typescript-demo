@@ -1,6 +1,6 @@
 import { Request, Response, Express } from 'express';
 import { BeerRepository, MockBeerRepository } from './beers-repo';
-import { OrderRequest } from './types';
+import { OrderId, OrderRequest } from './types';
 import { MockOrdersRepository, OrdersRepository } from './orders-repo';
 
 const ordersRepo: OrdersRepository = new MockOrdersRepository();
@@ -9,23 +9,23 @@ const beersRepo: BeerRepository = new MockBeerRepository();
 // curl -d "beerId=2&table=1&name=jay" http://localhost:2001/orders
 
 export function initPaths(app: Express): void {
-    app.get('/orders/:table', get);
-    app.post('/orders', order);
-    app.delete('/orders/:table', completeOrder)
+    app.get('/orders/:table/:name', get);
+    app.post('/orders/:table/:name', order);
+    app.delete('/orders/:table/:name', completeOrder)
 }
 
-function get(req: Request, res: Response): void {
-    const orders = ordersRepo.get(req.params.table);
-    res.send(orders ?? []);
+function get(req: Request<OrderId>, res: Response): void {
+    const orders = ordersRepo.get(req.params) ?? [];
+    res.send(orders);
 }
 
-function order(req: Request<any, any, OrderRequest>, res: Response): void {
+function order(req: Request<OrderId, any, OrderRequest>, res: Response): void {
     const beer = beersRepo.get(req.body.beerId)
     if (beer) {
         if (beer.pintsRemaining > 0) {
             beer.pintsRemaining -= 1;
             beersRepo.update(beer);
-            ordersRepo.addOrder(req.body.table, req.body);
+            ordersRepo.addOrder(req.params, req.body);
             res.sendStatus(200);
         }
         else {
@@ -37,7 +37,7 @@ function order(req: Request<any, any, OrderRequest>, res: Response): void {
     }
 }
 
-function completeOrder(req: Request, res: Response): void {
-    ordersRepo.deleteOrder(req.params.table);
+function completeOrder(req: Request<OrderId>, res: Response): void {
+    ordersRepo.deleteOrder(req.params);
     res.sendStatus(200);
 }

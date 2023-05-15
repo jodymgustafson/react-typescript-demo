@@ -22,11 +22,13 @@
 
     .start-data {
         label {
-        text-align: right;
+            text-align: right;
         }
+
         input {
             width: 8em;
         }
+
         select {
             width: 4em;
         }
@@ -36,6 +38,7 @@
         background-color: darkseagreen;
         color: black;
         padding: .25em;
+
         &:disabled {
             opacity: .5;
         }
@@ -50,22 +53,36 @@
 
     >header {
         display: block;
-        font-size: 120%;
-        margin-top: 1em;
+        font-size: 130%;
+        margin: 1em;
     }
+
+    button {
+        margin-left: 1em;
+        font-size: 100%;
+        background-color: darkseagreen;
+    }
+
+    .tab-info {
+        font-size: 90%;
+    }
+
     .beer-list {
         list-style-type: none;
         padding: 0;
         cursor: pointer;
+
         li {
             display: flex;
             flex-direction: row;
             text-align: left;
             margin: .5em 0;
             max-width: 40em;
+
             header {
                 color: cyan;
             }
+
             img {
                 display: inline-block;
                 width: 120px;
@@ -73,14 +90,23 @@
                 border: 1px solid gray;
                 margin-right: 1em;
             }
+
             border: 3px solid darkmagenta;
             border-radius: .25em;
             padding: .25em .5em;
-            .abv {
-                font-size: .7em;
-            }
+
             .description {
                 font-size: .8em;
+            }
+
+            .abv {
+                color: whitesmoke;
+                font-size: .6em;
+            }
+
+            .order {
+                color: whitesmoke;
+                font-size: .7em;
             }
         }
     }

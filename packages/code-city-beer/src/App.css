@@ -32,3 +32,7 @@ input, select, button {
 button {
     cursor: pointer;
 }
+
+.error {
+    color: red;
+}

@@ -6,7 +6,7 @@ const beerData: Beer[] = [
         name: "Asteroids Amber Ale",
         description: "A amber hued ale with notes of asteroid dust and rocket fuel.",
         abv: "5.6%",
-        pintsRemaining: 100,
+        pintsRemaining: getRandomAmount(),
         imageUrl: "asteroids.webp"
     },
     {
@@ -14,7 +14,7 @@ const beerData: Beer[] = [
         name: "Centipede Stout",
         description: "A dark beer with a deep nutty taste of roasted insects and mushrooms.",
         abv: "6.6%",
-        pintsRemaining: 100,
+        pintsRemaining: getRandomAmount(),
         imageUrl: "centipede.webp"
     },
     {
@@ -22,7 +22,7 @@ const beerData: Beer[] = [
         name: "Pac-Man Pale Ale",
         description: "A delightfully pleasant yellow hued ale--I ain't afraid of no ghost.",
         abv: "4.8%",
-        pintsRemaining: 100,
+        pintsRemaining: getRandomAmount(),
         imageUrl: "pac-man.webp"
     },
     {
@@ -30,7 +30,7 @@ const beerData: Beer[] = [
         name: "Galaga Lager",
         description: "Clear and crisp with a foamy head, and the taste of alien butt being blown to bits.",
         abv: "5.8%",
-        pintsRemaining: 100,
+        pintsRemaining: getRandomAmount(),
         imageUrl: "galaga.webp"
     },
     {
@@ -38,7 +38,7 @@ const beerData: Beer[] = [
         name: "Space Invaders IPA",
         description: "A hopped up ale with hints of pine and grapefruit--just the thing for taking on an alien invasion.",
         abv: "7.2%",
-        pintsRemaining: 100,
+        pintsRemaining: getRandomAmount(),
         imageUrl: "invaders.webp"
     },
     {
@@ -46,7 +46,7 @@ const beerData: Beer[] = [
         name: "Ms. Pac-Man Fruit Ale",
         description: "A fruity ale with berries, cherries and a hint of ghost pepper. A sophisticated yet down-to-earth brew.",
         abv: "5.9%",
-        pintsRemaining: 100,
+        pintsRemaining: getRandomAmount(),
         imageUrl: "ms-pac-man.webp"
     },
 ];
@@ -69,4 +69,8 @@ export class MockBeerRepository implements BeerRepository {
     update(beer: Beer): void {
         beerData[parseInt(beer.id) - 1] = beer;
     }
+}
+
+function getRandomAmount(): number {
+    return Math.floor(Math.random() * 90 + 10);
 }

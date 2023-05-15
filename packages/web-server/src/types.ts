@@ -7,8 +7,11 @@ export type Beer = {
     abv: string;
 };
 
-export type OrderRequest = {
-    beerId: string;
+export type OrderId = {
     table: string;
     name: string;
+};
+
+export type OrderRequest = {
+    beerId: string;
 };
