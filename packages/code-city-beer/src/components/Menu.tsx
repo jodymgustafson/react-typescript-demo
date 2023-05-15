@@ -11,6 +11,8 @@ type MenuProps = {
 };
 
 export default function Menu(props: MenuProps) {
+  // Don't use the new operator in useState!
+  // It gets called on every render, but only the first instance is used
   const [beerSvc, setBeerSvc] = useState<BeerService>();
   if (!beerSvc) {
     setBeerSvc(new LocalBeerService("localhost:2001"));
@@ -23,8 +25,10 @@ export default function Menu(props: MenuProps) {
 
   const [beerList, setBeerList] = useState<Beer[]>([]);
   const [error, setError] = useState("");
+  // This is being used to update the beer list after ever order
   const [lastOrderTime, setLastOrderTime] = useState(0);
 
+  // We can use useEffect to fetch data from the server
   useEffect(() => {
     if (beerSvc) {
       setError("");
@@ -34,19 +38,15 @@ export default function Menu(props: MenuProps) {
         })
         .catch(e => {
           console.log("Error:", e.message);
-          setError(e.message);
+          setError("Error fetching beer list: " + e.message);
         });
     }
-  }, [beerSvc, lastOrderTime])
+  }, [beerSvc, lastOrderTime]);
 
   return (
     <div className="menu">
       <header>&#127866; Code City Beer List &#127866;</header>
-      <div className="tab-info">
-        Table: {props.table}, Name: {props.orderName}
-        <button>View/Pay your tab &#x2714;</button>
-      </div>
-      {error && <div className="error">Error fetching beer list: {error}</div>}
+      {error && <div className="error">{error}</div>}
       <BeerList beers={beerList} onOrder={onOrderBeer} />
     </div>
   );
