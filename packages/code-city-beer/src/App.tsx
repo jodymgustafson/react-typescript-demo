@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import './App.css';
 import Welcome from './components/Welcome';
 import Menu from './components/Menu';
+import TabView from './components/TabView';
 
-type ViewName = "home" | "menu";
+type ViewName = "home" | "menu" | "tab";
 
 function App() {
   const [view, setView] = useState<ViewName>("home");
@@ -13,7 +14,8 @@ function App() {
   return (
     <div className="App">
       {view === "home" && <Welcome onStartOrder={startOrder}/>}
-      {view === "menu" && <Menu table={table} orderName={orderName}/>}
+      {view === "menu" && <Menu table={table} orderName={orderName} onViewTab={() => setView("tab")}/>}
+      {view === "tab" && <TabView table={table} orderName={orderName}/>}
     </div>
   );
 

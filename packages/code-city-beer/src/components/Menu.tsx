@@ -8,6 +8,7 @@ import { LocalOrderService, OrderService } from "../services/order-service";
 type MenuProps = {
   table: string;
   orderName: string;
+  onViewTab: () => void;
 };
 
 export default function Menu(props: MenuProps) {
@@ -40,11 +41,11 @@ export default function Menu(props: MenuProps) {
   }, [beerSvc, lastOrderTime])
 
   return (
-    <div className="menu">
+    <div className="menu view">
       <header>&#127866; Code City Beer List &#127866;</header>
       <div className="tab-info">
-        Table: {props.table}, Name: {props.orderName}
-        <button>View/Pay your tab &#x2714;</button>
+        Table: 1, Name: Your Name
+        <button onClick={props.onViewTab}>View/Pay your tab &#x2714;</button>
       </div>
       {error && <div className="error">Error fetching beer list: {error}</div>}
       <BeerList beers={beerList} onOrder={onOrderBeer} />
