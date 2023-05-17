@@ -1,8 +1,8 @@
-import { OrderRequest } from "web-server/src/types";
+import { OrderItem } from "web-server/src/types";
 
 export interface OrderService {
     orderBeer(beerId: string): Promise<void>;
-    getTab(): Promise<OrderRequest[]>;
+    getTab(): Promise<OrderItem[]>;
     closeTab(): Promise<void>;
 }
 
@@ -22,12 +22,12 @@ export class LocalOrderService implements OrderService {
             },
             body: JSON.stringify({ beerId })
         } as unknown as Request)
-            .then(r => {
-                console.log("Get beers", r);
+            .then(() => {
+                console.log("Beer ordered", beerId);
             });
     }
 
-    async getTab(): Promise<OrderRequest[]> {
+    async getTab(): Promise<OrderItem[]> {
         console.log("Calling", this.url);
         return await fetch(this.url, {
             method: "GET",
@@ -36,12 +36,21 @@ export class LocalOrderService implements OrderService {
             }
         } as unknown as Request)
             .then(r => {
-                console.log("Get beers", r);
+                console.log("Got tab");
                 return r.json();
             });
     }
 
     async closeTab(): Promise<void> {
-        throw new Error("Method not implemented.");
+        console.log("Calling", this.url);
+        await fetch(this.url, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        } as unknown as Request)
+            .then(() => {
+                console.log("Tab closed");
+            });
     }
 }

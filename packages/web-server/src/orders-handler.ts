@@ -1,6 +1,6 @@
 import { Request, Response, Express } from 'express';
 import { BeerRepository, MockBeerRepository } from './beers-repo';
-import { OrderId, OrderRequest } from './types';
+import { OrderId, OrderItem, OrderRequest } from './types';
 import { MockOrdersRepository, OrdersRepository } from './orders-repo';
 
 const ordersRepo: OrdersRepository = new MockOrdersRepository();
@@ -16,7 +16,25 @@ export function initPaths(app: Express): void {
 
 function get(req: Request<OrderId>, res: Response): void {
     const orders = ordersRepo.get(req.params) ?? [];
-    res.send(orders);
+
+    const items: OrderItem[] = [];
+    orders.forEach(o => {
+        const item = items.find(i => i.itemId === o.beerId);
+        if (!item) {
+            const beer = beersRepo.get(o.beerId);
+            items.push({
+                itemId: beer.id,
+                itemName: beer.name,
+                costPerUnit: beer.price,
+                count: 1
+            });
+        }
+        else {
+            item.count += 1;
+        }
+    });
+
+    res.send(items);
 }
 
 function order(req: Request<OrderId, any, OrderRequest>, res: Response): void {

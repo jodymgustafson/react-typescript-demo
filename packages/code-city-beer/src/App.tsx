@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       {view === "home" && <Welcome onStartOrder={startOrder}/>}
       {view === "menu" && <Menu table={table} orderName={orderName} onViewTab={() => setView("tab")}/>}
-      {view === "tab" && <TabView table={table} orderName={orderName}/>}
+      {view === "tab" && <TabView table={table} orderName={orderName} onClose={() => setView("menu")} onTabClosed={() => setView("home")}/>}
     </div>
   );
 
