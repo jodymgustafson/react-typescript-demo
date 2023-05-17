@@ -1,4 +1,4 @@
 node_modules
 assets
-web-server/build
-client-services/build
+packages/web-server/build
+packages/client-services/build
