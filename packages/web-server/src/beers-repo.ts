@@ -73,7 +73,7 @@ export class MockBeerRepository implements BeerRepository {
     }
 
     update(beer: Beer): void {
-        beerData[parseInt(beer.id) - 1] = beer;
+        beerData[beerData.findIndex(b => b.id === beer.id)] = beer;
     }
 }
 

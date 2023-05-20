@@ -23,7 +23,10 @@ export default function TabView(props: TabViewProps) {
     if (orderSvc) {
       orderSvc.getTab()
         .then(items => setOrderItems(items))
-        .catch(err => setError(err));
+        .catch(err => {
+          setError(err);
+          setOrderItems([]);
+        });
     }
   }, [orderSvc]);
 
