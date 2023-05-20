@@ -13,15 +13,16 @@ export default function OrderList(props: OrderListProps) {
 
   return (
     <div className="orders-list">
-      {props.orderItems.length === 0 && <>
+      {props.orderItems.length === 0 &&
+      <>
         <span className="descr">I suggest you order a beer</span>
         <span className="total">$0</span>
       </>}
       {props.orderItems.map(i =>
-        <>
+        <React.Fragment key={i.itemId}>
           <span className="descr">{i.itemName}</span>
           <span className="total">{i.count} @ ${i.costPerUnit} = ${i.count * i.costPerUnit}</span>
-        </>
+        </React.Fragment>
       )}
       <span>&nbsp;</span><span className="total due">Total Due: ${totalDue}</span>
     </div>

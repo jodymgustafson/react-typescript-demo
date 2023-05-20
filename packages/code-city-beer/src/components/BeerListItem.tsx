@@ -14,8 +14,8 @@ export default function BeerListItem(props: BeerListItemProps) {
       <div>
         <header>{beer.name}</header>
         <div className="description">{beer.description}</div>
-        <div className="abv">ABV: {beer.abv}</div>
-        <div className="order">
+        <div className="info">Price: ${beer.price}, ABV: {beer.abv}</div>
+        <div className="info">
           {beer.pintsRemaining > 0 &&
             <>
               Pints Remaining: {beer.pintsRemaining}

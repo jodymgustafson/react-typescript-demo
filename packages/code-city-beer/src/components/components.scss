@@ -23,7 +23,7 @@
 
 .welcome {
     h1 {
-        margin-top: 0;
+        margin: 0;
     }
 
     .start-data {
@@ -63,7 +63,6 @@
 }
 
 .menu.view {
-
     .beer-list {
         list-style-type: none;
         padding: 0;
@@ -96,14 +95,9 @@
                 font-size: .8em;
             }
 
-            .abv {
+            .info {
                 color: whitesmoke;
-                font-size: .6em;
-            }
-
-            .order {
-                color: whitesmoke;
-                font-size: .7em;
+                font-size: .65em;
             }
         }
     }
