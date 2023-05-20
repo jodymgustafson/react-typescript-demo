@@ -34,7 +34,7 @@ export default function TabView(props: TabViewProps) {
     <div className="tab view">
       <header>&#127866; Code City Beer Tab &#127866;</header>
       <div className="tab-info">
-        Table: 1, Name: Your Name
+        Table: {props.table}, Name: {props.orderName}
       </div>
       {error && <div className="error">{error}</div>}
       <OrderList orderItems={orderItems}/>
