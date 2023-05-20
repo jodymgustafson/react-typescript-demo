@@ -4,6 +4,7 @@ import { Beer } from "web-server/src/types";
 import "./components.scss";
 import { BeerService, LocalBeerService } from "../services/beer-service";
 import { LocalOrderService, OrderService } from "../services/order-service";
+import DefaultContainer from "./DefaultContainer";
 
 type MenuProps = {
   table: string;
@@ -42,13 +43,11 @@ export default function Menu(props: MenuProps) {
 
   return (
     <div className="menu view">
-      <header>&#127866; Code City Beer List &#127866;</header>
-      <div className="tab-info">
-        Table: {props.table}, Name: {props.orderName}
+      <DefaultContainer table={props.table} orderName={props.orderName}>
         <button onClick={props.onViewTab}>View/Pay your tab &#x2714;</button>
-      </div>
-      {error && <div className="error">{error}</div>}
-      <BeerList beers={beerList} onOrder={onOrderBeer} />
+        <>{error && <div className="error">{error}</div>}</>
+        <BeerList beers={beerList} onOrder={onOrderBeer} />
+      </DefaultContainer>
     </div>
   );
 

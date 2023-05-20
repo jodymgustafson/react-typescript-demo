@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LocalOrderService, OrderService } from "../services/order-service";
 import OrderList from "./OrderList";
 import { OrderItem } from "web-server/src/types";
+import DefaultContainer from "./DefaultContainer";
 
 type TabViewProps = {
   table: string;
@@ -32,16 +33,14 @@ export default function TabView(props: TabViewProps) {
 
   return (
     <div className="tab view">
-      <header>&#127866; Code City Beer Tab &#127866;</header>
-      <div className="tab-info">
-        Table: {props.table}, Name: {props.orderName}
-      </div>
-      {error && <div className="error">{error}</div>}
-      <OrderList orderItems={orderItems}/>
-      <div className="actions">
-        {orderItems.length > 0 && <button onClick={onPayClicked}>&#x2714; Pay Now</button>}
-        <button onClick={props.onClose}>&#x274C; Close</button>
-      </div>
+      <DefaultContainer table={props.table} orderName={props.orderName}>
+        <>{error && <div className="error">{error}</div>}</>
+        <OrderList orderItems={orderItems} />
+        <div className="actions">
+          {orderItems.length > 0 && <button onClick={onPayClicked}>&#x2714; Pay Now</button>}
+          <button onClick={props.onClose}>&#x274C; Close</button>
+        </div>
+      </DefaultContainer>
     </div>
   );
 
