@@ -9,7 +9,9 @@ export function initPaths(app: Express): void {
 }
 
 function list(_: Request, res: Response): void {
-    res.send(repo.list());
+    res.send({
+        beers: repo.list()
+    });
 }
 
 function get(req: Request, res: Response): void {

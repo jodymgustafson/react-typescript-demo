@@ -18,10 +18,8 @@ export class LocalBeerService implements BeerService {
                 "Content-Type": "application/json",
               }
         } as unknown as Request)
-        .then(r => {
-            console.log("Get beers", r);
-            return r.json();
-        });
+        .then(r => r.json())
+        .then(r => r.beers);
     }
 
     async getBeer(id: string): Promise<Beer> {

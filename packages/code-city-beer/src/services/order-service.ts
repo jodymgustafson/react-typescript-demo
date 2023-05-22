@@ -35,10 +35,8 @@ export class LocalOrderService implements OrderService {
                 "Content-Type": "application/json",
             }
         } as unknown as Request)
-            .then(r => {
-                console.log("Got tab");
-                return r.json();
-            });
+            .then(r => r.json())
+            .then(r => r.items);
     }
 
     async closeTab(): Promise<void> {
