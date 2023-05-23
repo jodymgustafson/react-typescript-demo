@@ -6,10 +6,10 @@ export interface BeerService {
 }
 
 export class LocalBeerService implements BeerService {
-    constructor(readonly server: string) {}
+    constructor(readonly serverName: string) {}
 
     async list(): Promise<Beer[]> {
-        const url = "http://" + this.server + "/beers";
+        const url = "http://" + this.serverName + "/beers";
         console.log("Getting beers from", url);
         
         return await fetch(url, {
@@ -18,10 +18,8 @@ export class LocalBeerService implements BeerService {
                 "Content-Type": "application/json",
               }
         } as unknown as Request)
-        .then(r => {
-            console.log("Get beers", r);
-            return r.json();
-        });
+        .then(r => r.json())
+        .then(r => r.beers);
     }
 
     async getBeer(id: string): Promise<Beer> {

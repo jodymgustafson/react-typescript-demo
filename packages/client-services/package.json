@@ -4,6 +4,8 @@
   "description": "Client services for code city beer app",
   "main": "index.js",
   "scripts": {
+    "clean": "del .\\build -Recurse -Force",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "JM Gustafson",

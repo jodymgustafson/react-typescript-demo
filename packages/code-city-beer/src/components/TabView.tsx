@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { LocalOrderService, OrderService } from "../services/order-service";
+import { LocalOrderService, OrderService } from "@local/client-services/build/order-service";
 import OrderList from "./OrderList";
 import { OrderItem } from "web-server/src/types";
 import DefaultContainer from "./DefaultContainer";
