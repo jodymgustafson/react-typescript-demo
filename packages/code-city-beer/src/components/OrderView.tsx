@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { LocalOrderService, OrderService } from "@local/client-services/build/order-service";
-import OrderList from "./OrderList";
+import { useEffect, useState } from "react";
 import { OrderItem } from "web-server/src/types";
+import { useOrderService } from "../hooks/useOrderService";
 import DefaultContainer from "./DefaultContainer";
+import OrderList from "./OrderList";
 
-type TabViewProps = {
+type OrderViewProps = {
   table: string;
   orderName: string;
   onClose: () => void;
   onTabClosed: () => void;
 };
 
-export default function TabView(props: TabViewProps) {
-  const [orderSvc, setOrderSvc] = useState<OrderService>();
-  if (!orderSvc) {
-    setOrderSvc(new LocalOrderService("localhost:2001", props.table, props.orderName));
-  }
+export default function OrderView(props: OrderViewProps) {
+  const orderSvc = useOrderService(props.table, props.orderName);
 
   const [error, setError] = useState("");
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);

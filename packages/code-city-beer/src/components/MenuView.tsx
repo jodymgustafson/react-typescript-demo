@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from "react";
-import BeerList from "./BeerList";
+import { useEffect, useState } from "react";
 import { Beer } from "web-server/src/types";
-import "./components.scss";
-import {LocalBeerService, BeerService } from "@local/client-services/build/beer-service";
-import { LocalOrderService, OrderService } from "@local/client-services/build/order-service";
+import { useBeerService } from "../hooks/useBeerService";
+import { useOrderService } from "../hooks/useOrderService";
+import BeerList from "./BeerList";
 import DefaultContainer from "./DefaultContainer";
+import "./components.scss";
 
-type MenuProps = {
+type MenuViewProps = {
   table: string;
   orderName: string;
   onViewTab: () => void;
 };
 
-export default function Menu(props: MenuProps) {
-  const [beerSvc, setBeerSvc] = useState<BeerService>();
-  if (!beerSvc) {
-    setBeerSvc(new LocalBeerService("localhost:2001"));
-  }
-
-  const [orderSvc, setOrderSvc] = useState<OrderService>();
-  if (!orderSvc) {
-    setOrderSvc(new LocalOrderService("localhost:2001", props.table, props.orderName));
-  }
+export default function MenuView(props: MenuViewProps) {
+  const beerSvc = useBeerService();
+  const orderSvc = useOrderService(props.table, props.orderName);
 
   const [beerList, setBeerList] = useState<Beer[]>([]);
   const [error, setError] = useState("");
