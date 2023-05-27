@@ -1,7 +1,7 @@
 {
-  "name": "@local/client-services",
+  "name": "@local/service-clients",
   "version": "1.0.0",
-  "description": "Client services for code city beer app",
+  "description": "Service clients for code city beer app",
   "main": "index.js",
   "scripts": {
     "clean": "del .\\build -Recurse -Force",

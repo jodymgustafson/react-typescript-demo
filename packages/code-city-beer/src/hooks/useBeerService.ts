@@ -1,4 +1,4 @@
-import { BeerService, LocalBeerService } from "@local/client-services/build/beer-service";
+import { BeerService, LocalBeerService } from "@local/service-clients/build/beer-service";
 import { useState } from "react";
 
 export function useBeerService(): BeerService {

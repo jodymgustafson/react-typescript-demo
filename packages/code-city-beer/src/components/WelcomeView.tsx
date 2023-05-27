@@ -1,17 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./components.scss";
 
-type WelcomeProps = {
+type WelcomeViewProps = {
   onStartOrder: (table: string, orderName: string) => void;
 };
 
-export default function Welcome(props: WelcomeProps) {
+export default function WelcomeView(props: WelcomeViewProps) {
   const [table, setTable] = useState("");
   const [orderName, setOrderName] = useState("");
 
+  useEffect(() => {
+    // Hitting enter == clicking start button
+    const eventHandler = (e: KeyboardEvent) => {
+      if (e.key === "Enter") onStartOrder();
+    };
+    window.addEventListener("keyup", eventHandler);
+    
+    // Return a cleanup function
+    return () => window.removeEventListener("keyup", eventHandler);  
+  });
+
   return (
     <div className="welcome view">
-      <header className="App-header">
+      <header>
         <img src="/ccb-logo.webp" className="App-logo" alt="logo" />
         <h1>
           Welcome to Code City Beer!
@@ -34,8 +45,14 @@ export default function Welcome(props: WelcomeProps) {
         <input type="text" value={orderName} onChange={e => setOrderName(e.target.value)} />
       </div>
       <div>
-        <button disabled={!(orderName && table)} onClick={() => props.onStartOrder(table, orderName)}>Start Order &#127866;</button>
+        <button disabled={!(orderName && table)} onClick={onStartOrder}>Start Order &#127866;</button>
       </div>
     </div>
   );
+
+  function onStartOrder(): void {
+    if (table && orderName) {
+      props.onStartOrder(table, orderName)
+    }
+  }
 }

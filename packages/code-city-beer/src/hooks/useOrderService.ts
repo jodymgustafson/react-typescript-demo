@@ -1,4 +1,4 @@
-import { LocalOrderService, OrderService } from "@local/client-services/build/order-service";
+import { LocalOrderService, OrderService } from "@local/service-clients/build/order-service";
 import { useState } from "react";
 
 export function useOrderService(table: string, orderName: string): OrderService {

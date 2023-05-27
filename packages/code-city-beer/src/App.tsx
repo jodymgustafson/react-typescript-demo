@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import Welcome from './components/Welcome';
+import WelcomeView from './components/WelcomeView';
 import MenuView from './components/MenuView';
 import OrderView from './components/OrderView';
 
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      {view === "home" && <Welcome onStartOrder={startOrder}/>}
+      {view === "home" && <WelcomeView onStartOrder={startOrder}/>}
       {view === "menu" && <MenuView table={table} orderName={orderName} onViewTab={() => setView("tab")}/>}
       {view === "tab" && <OrderView table={table} orderName={orderName} onClose={() => setView("menu")} onTabClosed={() => setView("home")}/>}
     </div>
