@@ -18,14 +18,12 @@ export default function OrderView(props: OrderViewProps) {
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
 
   useEffect(() => {
-    if (orderSvc) {
-      orderSvc.getTab()
-        .then(items => setOrderItems(items))
-        .catch(err => {
-          setError(err);
-          setOrderItems([]);
-        });
-    }
+    orderSvc.getTab()
+      .then(items => setOrderItems(items))
+      .catch(err => {
+        setError(err);
+        setOrderItems([]);
+      });
   }, [orderSvc]);
 
   return (

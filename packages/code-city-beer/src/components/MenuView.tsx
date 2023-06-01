@@ -21,17 +21,15 @@ export default function MenuView(props: MenuViewProps) {
   const [lastOrderTime, setLastOrderTime] = useState(0);
 
   useEffect(() => {
-    if (beerSvc) {
-      setError("");
-      beerSvc.list()
-        .then(list => {
-          setBeerList(list);
-        })
-        .catch(e => {
-          console.log("Error:", e.message);
-          setError("Error fetching beer list: " + e.message);
-        });
-    }
+    setError("");
+    beerSvc.list()
+      .then(list => {
+        setBeerList(list);
+      })
+      .catch(e => {
+        console.log("Error:", e.message);
+        setError("Error fetching beer list: " + e.message);
+      });
   }, [beerSvc, lastOrderTime])
 
   return (
@@ -45,7 +43,7 @@ export default function MenuView(props: MenuViewProps) {
   );
 
   function onOrderBeer(id: string): void {
-    orderSvc!.orderBeer(id)
+    orderSvc.orderBeer(id)
       .then(() => {
         setLastOrderTime(Date.now());
         toast("Your beer is on the way!");

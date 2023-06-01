@@ -5,7 +5,7 @@ type WelcomeProps = {
   onStartOrder: (table: string, orderName: string) => void;
 };
 
-export default function Welcome(props: WelcomeProps) {
+export default function WelcomeView(props: WelcomeProps) {
   const [table, setTable] = useState("");
   const [orderName, setOrderName] = useState("");
 
