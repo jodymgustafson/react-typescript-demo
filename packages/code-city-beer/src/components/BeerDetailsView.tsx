@@ -8,10 +8,10 @@ import { useOrderService } from "../hooks/useOrderService";
 
 export default function BeerDetailsView() {
   const context = useOrderContext();
-  const [beer, setBeer] = useState<Beer>();
-  const [error, setError] = useState<string>("");
   const svc = useBeerService();
   const orderSvc = useOrderService(context.table, context.orderName);
+  const [beer, setBeer] = useState<Beer>();
+  const [error, setError] = useState<string>("");
   const [lastOrderTime, setLastOrderTime] = useState(0);
   let { beerId } = useParams();
 
