@@ -150,7 +150,18 @@
 
     img {
         width: 480px;
+        height: 480px;
         margin: 1em;
+    }
+    @media screen and (max-width: 480px) {
+        img {
+            width: 100px;
+            height: 100px;
+        }            
+    }
+
+    .description {
+        text-align: left;
     }
 
     .info {
@@ -167,5 +178,10 @@
 
     a {
         color: wheat;
+    }
+}
+@media screen and (max-width: 480px) {
+    .beer-details {
+        display: block;
     }
 }
