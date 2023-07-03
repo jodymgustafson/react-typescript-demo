@@ -35,6 +35,9 @@ export class LocalBeerService implements BeerService {
                 "Content-Type": "application/json",
               }
         } as unknown as Request)
-        .then(r => r.json());
+        .then(r => {
+            if (r.ok) return r.json();
+            else throw new Error(r.statusText);
+        });
     }
 }

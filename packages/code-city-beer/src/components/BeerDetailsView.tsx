@@ -28,7 +28,7 @@ export default function BeerDetailsView() {
     <div className="beer view">
       <DefaultContainer table={context.table} orderName={context.orderName}>
         <div className="beer-details">
-          {error && <div className="error">${error}</div>}
+          {error && <div className="error">Error: {error}</div>}
           {!beer && !error && <div>Loading...</div>}
           {beer && <>
             <img src={"/" + beer.imageUrl} alt={beer.name} />
