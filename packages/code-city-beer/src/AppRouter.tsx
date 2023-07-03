@@ -11,16 +11,16 @@ export default function AppRouter() {
   const context = useOrderContext();
 
   return (
-<BrowserRouter>
-  <Routes>
-    <Route path="/" element={<App />} errorElement={<ErrorPage />}>
-      <Route index element={<WelcomeView onStartOrder={startOrder}/>} />
-      <Route path="menu" element={<MenuView />} />
-      <Route path="beer/:beerId" element={<BeerDetailsView />} />
-      <Route path="tab" element={<OrderView />} />
-    </Route>
-  </Routes>
-</BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} errorElement={<ErrorPage />}>
+          <Route index element={<WelcomeView onStartOrder={startOrder} />} />
+          <Route path="menu" element={<MenuView />} />
+          <Route path="beer/:beerId" element={<BeerDetailsView />} />
+          <Route path="tab" element={<OrderView />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 
   function startOrder(table: string, orderName: string): void {
