@@ -31,7 +31,7 @@ const beerData: Beer[] = [
     {
         id: "6",
         name: "Ms. Pac-Man Fruit Ale",
-        description: "A fruity ale with berries, cherries and a hint of ghost pepper. A sophisticated yet down-to-earth brew.",
+        description: "A fruity ale bouncing with berries and cherries. A sophisticated yet down-to-earth brew.",
         abv: "5.9%",
         pintsRemaining: getRandomAmount(),
         imageUrl: "ms-pac-man.webp",
@@ -40,7 +40,7 @@ const beerData: Beer[] = [
     {
         id: "3",
         name: "Pac-Man Pale Ale",
-        description: "A delightfully pleasant yellow hued ale--I ain't afraid of no ghosts.",
+        description: "A delightfully pleasant yellow hued ale and a hint of ghost pepper. I ain't afraid of no ghosts.",
         abv: "5.8%",
         pintsRemaining: getRandomAmount(),
         imageUrl: "pac-man.webp",
@@ -49,7 +49,7 @@ const beerData: Beer[] = [
     {
         id: "5",
         name: "Space Invaders IPA",
-        description: "A hopped up ale with hints of pine and grapefruit--just the thing for taking on an alien invasion.",
+        description: "A hopped up ale with a high ABV. Just the thing for taking on an alien invasion.",
         abv: "7.2%",
         pintsRemaining: getRandomAmount(),
         imageUrl: "invaders.webp",
