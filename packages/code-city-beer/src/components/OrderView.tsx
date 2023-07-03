@@ -3,16 +3,16 @@ import { OrderItem } from "web-server/src/types";
 import { useOrderService } from "../hooks/useOrderService";
 import DefaultContainer from "./DefaultContainer";
 import OrderList from "./OrderList";
+import { useOrderContext } from "../hooks/useOrderContext";
+import { useNavigate } from "react-router-dom";
 
 type OrderViewProps = {
-  table: string;
-  orderName: string;
-  onClose: () => void;
-  onTabClosed: () => void;
 };
 
 export default function OrderView(props: OrderViewProps) {
-  const orderSvc = useOrderService(props.table, props.orderName);
+  const context = useOrderContext();
+  const orderSvc = useOrderService(context.table, context.orderName);
+  const navigate = useNavigate();
 
   const [error, setError] = useState("");
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
@@ -30,12 +30,12 @@ export default function OrderView(props: OrderViewProps) {
 
   return (
     <div className="tab view">
-      <DefaultContainer table={props.table} orderName={props.orderName}>
+      <DefaultContainer table={context.table} orderName={context.orderName}>
         <>{error && <div className="error">{error}</div>}</>
         <OrderList orderItems={orderItems} />
         <div className="actions">
           {orderItems.length > 0 && <button onClick={onPayClicked}>&#x2714; Pay Now</button>}
-          <button onClick={props.onClose}>&#x274C; Close</button>
+          <button onClick={() => navigate("/menu")}>&#x274C; Close</button>
         </div>
       </DefaultContainer>
     </div>
@@ -46,7 +46,7 @@ export default function OrderView(props: OrderViewProps) {
     orderSvc!.closeTab()
       .then(() => {
         toast("\u2714 Your tab has been closed successfully. Come back soon!")
-        props.onTabClosed();
+        navigate("/");
       })
       .catch(err => {
         setError("Error closing tab, try again or speak with the manager: " + err.message);

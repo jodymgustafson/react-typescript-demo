@@ -6,13 +6,16 @@ export interface BeerService {
 }
 
 export class LocalBeerService implements BeerService {
-    constructor(readonly serverName: string) {}
+    private readonly url: string;
+
+    constructor(readonly serverName: string) {
+        this.url = `http://${this.serverName}/beers`;
+    }
 
     async list(): Promise<Beer[]> {
-        const url = "http://" + this.serverName + "/beers";
-        console.log("Getting beers from", url);
+        console.log("Getting beers from", this.url);
         
-        return await fetch(url, {
+        return await fetch(this.url, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -23,6 +26,15 @@ export class LocalBeerService implements BeerService {
     }
 
     async getBeer(id: string): Promise<Beer> {
-        throw new Error("Method not implemented.");
+        const url = this.url + "/" + id;
+        console.log("Getting beer from", url);
+        
+        return await fetch(url, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+              }
+        } as unknown as Request)
+        .then(r => r.json());
     }
 }

@@ -3,7 +3,7 @@ import React from "react";
 type DefaultContainerProps = {
   table: string;
   orderName: string;
-  children: JSX.Element[];
+  children: JSX.Element|JSX.Element[];
 };
 
 export default function DefaultContainer(props: DefaultContainerProps) {

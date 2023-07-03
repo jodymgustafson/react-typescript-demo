@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./components.scss";
+import { useNavigate } from "react-router-dom";
 
 type WelcomeViewProps = {
   onStartOrder: (table: string, orderName: string) => void;
@@ -8,7 +9,8 @@ type WelcomeViewProps = {
 export default function WelcomeView(props: WelcomeViewProps) {
   const [table, setTable] = useState("");
   const [orderName, setOrderName] = useState("");
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     // Hitting enter == clicking start button
     const eventHandler = (e: KeyboardEvent) => {
@@ -52,7 +54,8 @@ export default function WelcomeView(props: WelcomeViewProps) {
 
   function onStartOrder(): void {
     if (table && orderName) {
-      props.onStartOrder(table, orderName)
+      props.onStartOrder(table, orderName);
+      navigate("/menu");
     }
   }
 }

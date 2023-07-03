@@ -137,3 +137,35 @@
         margin-top: 1em;
     }
 }
+
+.beer-details {
+    display: flex;
+    flex-direction: columns;
+
+    header {
+        color: cyan;
+        font-size: 1.2em;
+        margin: 1em;
+    }
+
+    img {
+        width: 480px;
+        margin: 1em;
+    }
+
+    .info {
+        color: whitesmoke;
+        font-size: .8em;
+        margin-top: 1em;
+        text-align: left;
+    }
+
+    ul {
+        list-style-type: none;
+        text-align: left;
+    }
+
+    a {
+        color: wheat;
+    }
+}

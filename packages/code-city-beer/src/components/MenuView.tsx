@@ -5,16 +5,16 @@ import { useOrderService } from "../hooks/useOrderService";
 import BeerList from "./BeerList";
 import DefaultContainer from "./DefaultContainer";
 import "./components.scss";
+import { Link } from "react-router-dom";
+import { useOrderContext } from "../hooks/useOrderContext";
 
 type MenuViewProps = {
-  table: string;
-  orderName: string;
-  onViewTab: () => void;
 };
 
 export default function MenuView(props: MenuViewProps) {
+  const context = useOrderContext();
   const beerSvc = useBeerService();
-  const orderSvc = useOrderService(props.table, props.orderName);
+  const orderSvc = useOrderService(context.table, context.orderName);
 
   const [beerList, setBeerList] = useState<Beer[]>([]);
   const [error, setError] = useState("");
@@ -36,8 +36,8 @@ export default function MenuView(props: MenuViewProps) {
 
   return (
     <div className="menu view">
-      <DefaultContainer table={props.table} orderName={props.orderName}>
-        <button onClick={props.onViewTab}>View/Pay your tab &#x2714;</button>
+      <DefaultContainer table={context.table} orderName={context.orderName}>
+        <Link to="/tab">View/Pay your tab &#x2714;</Link>
         <>{error && <div className="error">{error}</div>}</>
         <BeerList beers={beerList} onOrder={onOrderBeer} />
       </DefaultContainer>
