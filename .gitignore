@@ -2,3 +2,4 @@ node_modules
 assets
 packages/web-server/build
 packages/service-clients/build
+/temp
