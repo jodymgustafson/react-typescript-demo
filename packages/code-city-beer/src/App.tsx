@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import Welcome from './components/WelcomeView';
 import Menu from './components/MenuView';
-import TabView from './components/TabView';
+import TabView from './components/OrderView';
 
 type ViewName = "home" | "menu" | "tab";
 
