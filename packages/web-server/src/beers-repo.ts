@@ -7,7 +7,8 @@ const beerData: Beer[] = [
         description: "A amber hued ale with notes of asteroid dust and rocket fuel.",
         abv: "5.6%",
         pintsRemaining: getRandomAmount(),
-        imageUrl: "asteroids.webp"
+        imageUrl: "asteroids.webp",
+        price: 6
     },
     {
         id: "2",
@@ -15,39 +16,44 @@ const beerData: Beer[] = [
         description: "A dark beer with a deep nutty taste of roasted insects and mushrooms.",
         abv: "6.6%",
         pintsRemaining: getRandomAmount(),
-        imageUrl: "centipede.webp"
-    },
-    {
-        id: "3",
-        name: "Pac-Man Pale Ale",
-        description: "A delightfully pleasant yellow hued ale--I ain't afraid of no ghost.",
-        abv: "4.8%",
-        pintsRemaining: getRandomAmount(),
-        imageUrl: "pac-man.webp"
+        imageUrl: "centipede.webp",
+        price: 7
     },
     {
         id: "4",
         name: "Galaga Lager",
         description: "Clear and crisp with a foamy head, and the taste of alien butt being blown to bits.",
-        abv: "5.8%",
+        abv: "4.8%",
         pintsRemaining: getRandomAmount(),
-        imageUrl: "galaga.webp"
-    },
-    {
-        id: "5",
-        name: "Space Invaders IPA",
-        description: "A hopped up ale with hints of pine and grapefruit--just the thing for taking on an alien invasion.",
-        abv: "7.2%",
-        pintsRemaining: getRandomAmount(),
-        imageUrl: "invaders.webp"
+        imageUrl: "galaga.webp",
+        price: 5
     },
     {
         id: "6",
         name: "Ms. Pac-Man Fruit Ale",
-        description: "A fruity ale with berries, cherries and a hint of ghost pepper. A sophisticated yet down-to-earth brew.",
+        description: "A fruity ale bouncing with berries and cherries. A sophisticated yet down-to-earth brew.",
         abv: "5.9%",
         pintsRemaining: getRandomAmount(),
-        imageUrl: "ms-pac-man.webp"
+        imageUrl: "ms-pac-man.webp",
+        price: 7
+    },
+    {
+        id: "3",
+        name: "Pac-Man Pale Ale",
+        description: "A delightfully pleasant yellow hued ale and a hint of ghost pepper. I ain't afraid of no ghosts.",
+        abv: "5.8%",
+        pintsRemaining: getRandomAmount(),
+        imageUrl: "pac-man.webp",
+        price: 6
+    },
+    {
+        id: "5",
+        name: "Space Invaders IPA",
+        description: "A hopped up ale with a high ABV. Just the thing for taking on an alien invasion.",
+        abv: "7.2%",
+        pintsRemaining: getRandomAmount(),
+        imageUrl: "invaders.webp",
+        price: 6
     },
 ];
 
@@ -67,7 +73,7 @@ export class MockBeerRepository implements BeerRepository {
     }
 
     update(beer: Beer): void {
-        beerData[parseInt(beer.id) - 1] = beer;
+        beerData[beerData.findIndex(b => b.id === beer.id)] = beer;
     }
 }
 
