@@ -19,5 +19,5 @@ function get(req: Request, res: Response): void {
     if (beer)
         res.send(beer);
     else
-        res.sendStatus(404);
+        res.sendStatus(400);
 }
