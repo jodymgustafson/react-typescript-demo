@@ -34,7 +34,7 @@ function get(req: Request<OrderId>, res: Response): void {
         }
     });
 
-    res.send(items);
+    res.send({ items });
 }
 
 function order(req: Request<OrderId, any, OrderRequest>, res: Response): void {
