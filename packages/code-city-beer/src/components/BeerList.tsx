@@ -10,7 +10,7 @@ type BeerListProps = {
 export default function BeerList(props: BeerListProps) {
   return (
     <ul className="beer-list">
-      {props.beers.map(beer => <BeerListItem onOrder={props.onOrder} beer={beer}/>)}
+      {props.beers.map(beer => <BeerListItem key={beer.id} onOrder={props.onOrder} beer={beer}/>)}
     </ul>
   );
 }
