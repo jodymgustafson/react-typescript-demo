@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import Welcome from './components/Welcome';
-import Menu from './components/Menu';
+import Welcome from './components/WelcomeView';
+import Menu from './components/MenuView';
 
 type ViewName = "home" | "menu";
 
