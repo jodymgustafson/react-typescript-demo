@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "Web server for Code City Beer",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node build/index.js",
+    "clean": "del .\\build -Recurse -Force",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "JM Gustafson",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2"
   },
   "devDependencies": {

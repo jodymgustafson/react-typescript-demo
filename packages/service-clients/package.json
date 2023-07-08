@@ -1,0 +1,16 @@
+{
+  "name": "@local/service-clients",
+  "version": "1.0.0",
+  "description": "Service clients for code city beer app",
+  "main": "index.js",
+  "scripts": {
+    "clean": "del .\\build -Recurse -Force",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JM Gustafson",
+  "license": "ISC",
+  "dependencies": {
+    "web-server": "^1.0.0"
+  }
+}
