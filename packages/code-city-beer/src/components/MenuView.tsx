@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import BeerList from "./BeerList";
 import { Beer } from "web-server/src/types";
 import "./components.scss";
-import { BeerService, LocalBeerService } from "../services/beer-service";
-import { LocalOrderService, OrderService } from "../services/order-service";
+import { BeerService, LocalBeerService } from "@local/service-clients/build/beer-service";
+import { LocalOrderService, OrderService } from "@local/service-clients/build/order-service";
 
 type MenuProps = {
   table: string;
