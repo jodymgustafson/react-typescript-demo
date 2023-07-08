@@ -9,7 +9,9 @@ export function initPaths(app: Express): void {
 }
 
 function list(_: Request, res: Response): void {
-    res.send(repo.list());
+    res.send({
+        beers: repo.list()
+    });
 }
 
 function get(req: Request, res: Response): void {
@@ -17,5 +19,5 @@ function get(req: Request, res: Response): void {
     if (beer)
         res.send(beer);
     else
-        res.sendStatus(404);
+        res.sendStatus(400);
 }

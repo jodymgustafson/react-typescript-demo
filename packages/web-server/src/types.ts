@@ -5,6 +5,7 @@ export type Beer = {
     imageUrl: string;
     pintsRemaining: number;
     abv: string;
+    price: number;
 };
 
 export type OrderId = {
@@ -15,3 +16,10 @@ export type OrderId = {
 export type OrderRequest = {
     beerId: string;
 };
+
+export type OrderItem = {
+    itemName: string;
+    itemId: string;
+    costPerUnit: number;
+    count: number;
+}
