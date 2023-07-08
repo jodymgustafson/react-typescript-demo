@@ -1,2 +1,5 @@
 node_modules
-*.js
+assets
+packages/web-server/build
+packages/service-clients/build
+/temp
