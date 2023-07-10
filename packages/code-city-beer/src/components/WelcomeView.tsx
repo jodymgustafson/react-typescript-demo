@@ -5,8 +5,8 @@ type WelcomeProps = {
 };
 
 export default function Welcome(props: WelcomeProps) {
-  const [table, setTable] = useState("");
-  const [orderName, setOrderName] = useState("");
+  const [table, setTable] = useState<string>("");
+  const [orderName, setOrderName] = useState<string>("");
 
   return (
     <div className="welcome view">
@@ -33,7 +33,10 @@ export default function Welcome(props: WelcomeProps) {
         <input type="text" value={orderName} onChange={e => setOrderName(e.target.value)} />
       </div>
       <div>
-        <button disabled={!(orderName && table)} onClick={() => props.onStartOrder(table, orderName)}>Start Order &#127866;</button>
+        <button disabled={!(orderName && table)}
+          onClick={() => props.onStartOrder(table, orderName)}>
+            Start Order &#127866;
+        </button>
       </div>
     </div>
   );
