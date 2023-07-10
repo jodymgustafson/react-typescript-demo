@@ -1,34 +1,3 @@
-# React-TypeScript Demo
-
-React + TypeScript == 🌈🦄
-
-This project is used to demonstrate using TypeScript to write a React app.
-
-Each step uses a different git branch in this order.
-
-- init-install (state after create-react-app)
-- welcome (welcome view markup)
-- welcome-impl (welcome view implemented)
-- beer-list (menu view markup)
-- beer-list-impl (beer list implemented)
-- view-tab (order view markup)
-- view-tab-impl (order view implemented)
-- container-component (default-container)
-- side-effect-cleanup (welcome-view)
-- custom-hooks
-- routing
-- main
-
-## Steps to run demo
-
-- Start the server
-
-  npm run start-server
-
-- Start the React app
-
-  npm run start
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
