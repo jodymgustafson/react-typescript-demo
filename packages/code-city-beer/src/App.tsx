@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import Welcome from './components/WelcomeView';
+import WelcomeView from './components/WelcomeView';
 
 type ViewName = "home" | "beer-list";
 
@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      {view === "home" && <Welcome onStartOrder={startOrder}/>}
+      {view === "home" && <WelcomeView onStartOrder={startOrder}/>}
     </div>
   );
 
