@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import Welcome from './components/WelcomeView';
-import Menu from './components/MenuView';
-import TabView from './components/OrderView';
+import WelcomeView from './components/WelcomeView';
+import MenuView from './components/MenuView';
+import OrderView from './components/OrderView';
 
 type ViewName = "home" | "menu" | "tab";
 
@@ -13,9 +13,9 @@ function App() {
 
   return (
     <div className="App">
-      {view === "home" && <Welcome onStartOrder={startOrder}/>}
-      {view === "menu" && <Menu table={table} orderName={orderName} onViewTab={() => setView("tab")}/>}
-      {view === "tab" && <TabView table={table} orderName={orderName} onClose={() => setView("menu")} onTabClosed={() => setView("home")}/>}
+      {view === "home" && <WelcomeView onStartOrder={startOrder}/>}
+      {view === "menu" && <MenuView table={table} orderName={orderName} onViewTab={() => setView("tab")}/>}
+      {view === "tab" && <OrderView table={table} orderName={orderName} onClose={() => setView("menu")} onTabClosed={() => setView("home")}/>}
     </div>
   );
 

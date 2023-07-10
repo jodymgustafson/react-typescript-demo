@@ -4,14 +4,14 @@ import OrderList from "./OrderList";
 import { OrderItem } from "web-server/src/types";
 import DefaultContainer from "./DefaultContainer";
 
-type TabViewProps = {
+type OrderViewProps = {
   table: string;
   orderName: string;
   onClose: () => void;
   onTabClosed: () => void;
 };
 
-export default function TabView(props: TabViewProps) {
+export default function OrderView(props: OrderViewProps) {
   const [orderSvc, setOrderSvc] = useState<OrderService>();
   if (!orderSvc) {
     setOrderSvc(new LocalOrderService("localhost:2001", props.table, props.orderName));
