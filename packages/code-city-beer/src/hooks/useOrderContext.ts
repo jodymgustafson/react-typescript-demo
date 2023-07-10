@@ -1,13 +1,20 @@
+import { useRef } from "react";
+
 export type OrderContext = {
     table: string;
     orderName: string;
 };
 
-export let context: OrderContext = {
+const globalContext: OrderContext = {
     table: "",
     orderName: ""
 };
 
 export function useOrderContext(): OrderContext {
-    return context;
+    const context = useRef<OrderContext>();
+    if (!context.current) {
+        context.current = globalContext;
+    }
+
+    return context.current;
 }
