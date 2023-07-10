@@ -5,12 +5,12 @@ import "./components.scss";
 import { BeerService, LocalBeerService } from "@local/service-clients/build/beer-service";
 import { LocalOrderService, OrderService } from "@local/service-clients/build/order-service";
 
-type MenuProps = {
+type MenuViewProps = {
   table: string;
   orderName: string;
 };
 
-export default function Menu(props: MenuProps) {
+export default function MenuView(props: MenuViewProps) {
   // Don't use the new operator in useState!
   // It gets called on every render, but only the first instance is used
   const [beerSvc, setBeerSvc] = useState<BeerService>();
@@ -24,9 +24,11 @@ export default function Menu(props: MenuProps) {
   }
 
   const [beerList, setBeerList] = useState<Beer[]>([]);
-  const [error, setError] = useState("");
-  // This is being used to update the beer list after ever order
-  const [lastOrderTime, setLastOrderTime] = useState(0);
+
+  const [error, setError] = useState<string>("");
+
+  // This is being used to update the beer list after every order
+  const [lastOrderTime, setLastOrderTime] = useState<number>(0);
 
   // We can use useEffect to fetch data from the server
   useEffect(() => {

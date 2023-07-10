@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./components.scss";
 
-type WelcomeProps = {
+type WelcomeViewProps = {
   onStartOrder: (table: string, orderName: string) => void;
 };
 
-export default function Welcome(props: WelcomeProps) {
+export default function WelcomeView(props: WelcomeViewProps) {
   const [table, setTable] = useState("");
   const [orderName, setOrderName] = useState("");
 
