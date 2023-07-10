@@ -5,13 +5,13 @@ import "./components.scss";
 import { BeerService, LocalBeerService } from "@local/service-clients/build/beer-service";
 import { LocalOrderService, OrderService } from "@local/service-clients/build/order-service";
 
-type MenuProps = {
+type MenuViewProps = {
   table: string;
   orderName: string;
   onViewTab: () => void;
 };
 
-export default function Menu(props: MenuProps) {
+export default function MenuView(props: MenuViewProps) {
   const [beerSvc, setBeerSvc] = useState<BeerService>();
   if (!beerSvc) {
     setBeerSvc(new LocalBeerService("localhost:2001"));
