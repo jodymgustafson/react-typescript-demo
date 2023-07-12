@@ -4,7 +4,7 @@ import { useRef } from "react";
 export function useOrderService(table: string, orderName: string): OrderService {
     const orderSvc = useRef<OrderService>();
     if (!orderSvc.current) {
-        orderSvc.current = new LocalOrderService("localhost:2001", table, orderName);
+        orderSvc.current = new LocalOrderService(window.location.hostname + ":2001", table, orderName);
     }
 
     return orderSvc.current;
