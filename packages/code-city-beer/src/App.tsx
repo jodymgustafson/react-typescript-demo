@@ -8,8 +8,8 @@ type ViewName = "home" | "menu" | "tab";
 
 function App() {
   const [view, setView] = useState<ViewName>("home");
-  const [table, setTable] = useState("");
-  const [orderName, setOrderName] = useState("");
+  const [table, setTable] = useState<string>("");
+  const [orderName, setOrderName] = useState<string>("");
 
   return (
     <div className="App">

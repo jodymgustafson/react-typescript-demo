@@ -14,7 +14,7 @@ type OrderViewProps = {
 export default function OrderView(props: OrderViewProps) {
   const orderSvc = useOrderService(props.table, props.orderName);
 
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
   const [orderItems, setOrderItems] = useState<OrderItem[]>([]);
 
   useEffect(() => {

@@ -6,6 +6,6 @@ export function useBeerService(): BeerService {
     if (!beerSvc.current) {
       beerSvc.current = new LocalBeerService(window.location.hostname + ":2001");
     }
-  
+
     return beerSvc.current;
 }

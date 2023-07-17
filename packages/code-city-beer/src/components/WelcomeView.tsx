@@ -6,18 +6,20 @@ type WelcomeViewProps = {
 };
 
 export default function WelcomeView(props: WelcomeViewProps) {
-  const [table, setTable] = useState("");
-  const [orderName, setOrderName] = useState("");
+  const [table, setTable] = useState<string>("");
+  const [orderName, setOrderName] = useState<string>("");
 
   useEffect(() => {
     // Hitting enter == clicking start button
     const eventHandler = (e: KeyboardEvent) => {
-      if (e.key === "Enter") onStartOrder();
+      if (e.key === "Enter") {
+        onStartOrder();
+      }
     };
     window.addEventListener("keyup", eventHandler);
     
     // Return a cleanup function
-    return () => window.removeEventListener("keyup", eventHandler);  
+    return () => window.removeEventListener("keyup", eventHandler);
   });
 
   return (

@@ -17,22 +17,20 @@ export default function MenuView(props: MenuViewProps) {
   const orderSvc = useOrderService(props.table, props.orderName);
 
   const [beerList, setBeerList] = useState<Beer[]>([]);
-  const [error, setError] = useState("");
-  const [lastOrderTime, setLastOrderTime] = useState(0);
+  const [error, setError] = useState<string>("");
+  const [lastOrderTime, setLastOrderTime] = useState<number>(0);
 
   useEffect(() => {
-    if (beerSvc) {
-      setError("");
-      beerSvc.list()
-        .then(list => {
-          setBeerList(list);
-        })
-        .catch(e => {
-          console.log("Error:", e.message);
-          setError("Error fetching beer list: " + e.message);
-        });
-    }
-  }, [beerSvc, lastOrderTime])
+    setError("");
+    beerSvc.list()
+      .then(list => {
+        setBeerList(list);
+      })
+      .catch(e => {
+        console.log("Error:", e.message);
+        setError("Error fetching beer list: " + e.message);
+      });
+  }, [beerSvc, lastOrderTime]);
 
   return (
     <div className="menu view">
