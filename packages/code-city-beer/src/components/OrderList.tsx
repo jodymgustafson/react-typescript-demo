@@ -8,7 +8,7 @@ type OrderListProps = {
 export default function OrderList(props: OrderListProps) {
   const totalDue = useMemo<string>(() => {
     const ttl = props.orderItems.reduce((ttl, i) => ttl = ttl + i.count * i.costPerUnit, 0);
-    return ttl.toFixed();
+    return ttl.toString();
   }, [props.orderItems]);
 
   return (

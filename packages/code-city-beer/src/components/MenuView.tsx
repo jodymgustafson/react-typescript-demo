@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Beer } from "web-server/src/types";
-import { useBeerService } from "../hooks/useBeerService";
 import { useOrderService } from "../hooks/useOrderService";
 import BeerList from "./BeerList";
 import DefaultContainer from "./DefaultContainer";
 import "./components.scss";
+import { BeerService, LocalBeerService } from "@local/service-clients/build/beer-service";
 
 type MenuViewProps = {
   table: string;
@@ -13,8 +13,12 @@ type MenuViewProps = {
 };
 
 export default function MenuView(props: MenuViewProps) {
-  const beerSvc = useBeerService();
   const orderSvc = useOrderService(props.table, props.orderName);
+  
+  const beerSvc = useRef<BeerService>();
+  if (!beerSvc.current) {
+    beerSvc.current = new LocalBeerService(window.location.hostname + ":2001");
+  }
 
   const [beerList, setBeerList] = useState<Beer[]>([]);
   const [error, setError] = useState<string>("");
@@ -22,7 +26,7 @@ export default function MenuView(props: MenuViewProps) {
 
   useEffect(() => {
     setError("");
-    beerSvc.list()
+    beerSvc.current!.list()
       .then(list => {
         setBeerList(list);
       })
