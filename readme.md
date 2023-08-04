@@ -2,8 +2,9 @@
 
 This app is used for the React + TypeScript = Maintainable Web Apps Demo.
 
-This monorepo contains two packages
+This monorepo contains three packages
 - code-city-beer: The React app
+- service-clients: Clients to help call REST apis
 - web-server: The REST API used by the React app
 
 ## Build
