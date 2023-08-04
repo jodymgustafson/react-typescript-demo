@@ -21,26 +21,26 @@ export default function MenuView(props: MenuViewProps) {
   }
 
   const [beerList, setBeerList] = useState<Beer[]>([]);
-  const [error, setError] = useState<string>("");
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const [lastOrderTime, setLastOrderTime] = useState<number>(0);
 
   useEffect(() => {
-    setError("");
+    setErrorMsg("");
     beerSvc.current!.list()
       .then(list => {
         setBeerList(list);
       })
       .catch(e => {
         console.log("Error:", e.message);
-        setError("Error fetching beer list: " + e.message);
+        setErrorMsg("Error fetching beer list: " + e.message);
       });
-  }, [beerSvc, lastOrderTime]);
+  }, [lastOrderTime]);
 
   return (
     <div className="menu view">
       <DefaultContainer table={props.table} orderName={props.orderName}>
         <button onClick={props.onViewTab}>View/Pay your tab &#x2714;</button>
-        <>{error && <div className="error">{error}</div>}</>
+        <>{errorMsg && <div className="error">{errorMsg}</div>}</>
         <BeerList beers={beerList} onOrder={onOrderBeer} />
       </DefaultContainer>
     </div>
@@ -53,7 +53,7 @@ export default function MenuView(props: MenuViewProps) {
         toast("Your beer is on the way!");
       })
       .catch(err => {
-        setError("There was a problem with your order: " + err.message);
+        setErrorMsg("There was a problem with your order: " + err.message);
       });
   }
 
