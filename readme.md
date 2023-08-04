@@ -18,21 +18,6 @@ For the demo there are three primary branches
 - demo/no-routing
 - demo/routing
 
-Other branches are more fine grained steps in this order
-
-- init-install (state after create-react-app)
-- welcome (welcome view markup)
-- welcome-impl (welcome view implemented)
-- beer-list (menu view markup)
-- beer-list-impl (beer list implemented)
-- view-tab (order view markup)
-- view-tab-impl (order view implemented)
-- container-component (default-container)
-- custom-hooks
-- side-effect-cleanup (welcome-view)
-- routing
-- main
-
 ## Build
 You only need to build the web server and service clients code by running a TypeScript build.
 
@@ -40,7 +25,7 @@ The React app doesn't require a build.
 
 ## Run
 
-To start the web server run
+To start the REST api server run
     npm run start-server
 
 To start the React app run
