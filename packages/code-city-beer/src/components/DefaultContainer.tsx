@@ -6,6 +6,9 @@ type DefaultContainerProps = {
   children: JSX.Element[];
 };
 
+/**
+ * Container with the default app header used for most views
+ */
 export default function DefaultContainer(props: DefaultContainerProps) {
   return (
     <>
