@@ -4,6 +4,7 @@
   "description": "React + TypeScript = Maintainable Web Apps",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build --workspace=@local/service-clients && npm run build --workspace=web-server",
     "start": "cd packages/code-city-beer && npm start",
     "start-server": "cd packages/web-server && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
