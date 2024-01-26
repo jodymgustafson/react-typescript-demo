@@ -18,6 +18,7 @@ export default function MenuView(props: MenuViewProps) {
 
   const [beerList, setBeerList] = useState<Beer[]>([]);
   const [error, setError] = useState("");
+  // This will cause the beer list to get updated after a beer is ordered
   const [lastOrderTime, setLastOrderTime] = useState(0);
 
   useEffect(() => {

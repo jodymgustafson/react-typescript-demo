@@ -1,6 +1,11 @@
 import { LocalOrderService, OrderService } from "@local/service-clients/build/order-service";
 import { useRef } from "react";
 
+/**
+ * Gets an instance of the order service
+ * @param table Customer's table id
+ * @param orderName Customer's name
+ */
 export function useOrderService(table: string, orderName: string): OrderService {
     const orderSvc = useRef<OrderService>();
     if (!orderSvc.current) {

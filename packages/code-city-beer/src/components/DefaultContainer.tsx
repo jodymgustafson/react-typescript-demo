@@ -6,6 +6,9 @@ type DefaultContainerProps = {
   children: JSX.Element|JSX.Element[];
 };
 
+/**
+ * A container that surrounds content with the page header used by most pages
+ */
 export default function DefaultContainer(props: DefaultContainerProps) {
   return (
     <>
