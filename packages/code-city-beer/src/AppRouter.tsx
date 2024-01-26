@@ -8,7 +8,7 @@ import BeerDetailsView from "./components/BeerDetailsView";
 import OrderView from "./components/OrderView";
 
 export default function AppRouter() {
-  // const context = useOrderContext();
+  const context = useOrderContext();
 
   return (
     <BrowserRouter>
@@ -24,7 +24,7 @@ export default function AppRouter() {
   );
 
   function startOrder(table: string, orderName: string): void {
-    // context.table = table;
-    // context.orderName = orderName;
+    context.table = table;
+    context.orderName = orderName;
   }
 }
