@@ -20,6 +20,8 @@ For the demo there are three primary branches
 
 ## Build
 You only need to build the web server and service clients code by running a TypeScript build.
+Use this command to build them.
+    npm run build
 
 The React app doesn't require a build.
 
