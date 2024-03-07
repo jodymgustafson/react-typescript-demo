@@ -15,13 +15,7 @@ export class LocalOrderService implements OrderService {
 
     async orderBeer(beerId: string): Promise<void> {
         console.log("Calling", this.url);
-        await fetch(this.url, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ beerId })
-        } as unknown as Request)
+        await this.doFetch("POST", JSON.stringify({ beerId }))
             .then(() => {
                 console.log("Beer ordered", beerId);
             });
@@ -29,26 +23,26 @@ export class LocalOrderService implements OrderService {
 
     async getTab(): Promise<OrderItem[]> {
         console.log("Calling", this.url);
-        return await fetch(this.url, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-            }
-        } as unknown as Request)
+        return await this.doFetch("GET")
             .then(r => r.json())
             .then(r => r.items);
     }
 
     async closeTab(): Promise<void> {
         console.log("Calling", this.url);
-        await fetch(this.url, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        } as unknown as Request)
+        await this.doFetch("DELETE")
             .then(() => {
                 console.log("Tab closed");
             });
+    }
+
+    private async doFetch(method: string, body?: any): Promise<Response> {
+        return await fetch(this.url, {
+            method,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body
+        } as unknown as Request);
     }
 }
